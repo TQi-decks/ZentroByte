@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZentroByte x The Quirky i: Growth & Performance Marketing Proposal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:       #07101F;
+      --surf:     #0D1A30;
+      --surf2:    #142240;
+      --cyan:     #00C8F0;
+      --violet:   #8B5CF6;
+      --green:    #10B981;
+      --amber:    #F59E0B;
+      --red:      #EF4444;
+      --text:     #E2EEFF;
+      --text2:    #8BA4C8;
+      --text3:    #445A7A;
+      --border:   rgba(255,255,255,0.07);
+      --border-c: rgba(0,200,240,0.2);
+      --fd:       'Plus Jakarta Sans', sans-serif;
+      --fb:       'Inter', sans-serif;
+      --r:        12px;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      background:var(--bg);
+      color:var(--text);
+      font-family:var(--fb);
+      font-size:16px;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    /* ─── NAV DOTS ─── */
+    .nav-dots {
+      position:fixed; right:24px; top:50%;
+      transform:translateY(-50%);
+      display:flex; flex-direction:column; gap:10px;
+      z-index:200;
+    }
+    .nd {
+      width:7px; height:7px; border-radius:50%;
+      background:var(--text3); border:none; cursor:pointer;
+      transition:all .3s; outline:none;
+    }
+    .nd.active { background:var(--cyan); transform:scale(1.5); }
+    .nd:hover   { background:var(--text2); }
+
+    /* ─── SECTION BASE ─── */
+    section {
+      min-height:100vh; padding:80px 88px;
+      display:flex; flex-direction:column; justify-content:center;
+      position:relative; overflow:hidden;
+    }
+    section + section { border-top:1px solid var(--border); }
+
+    .eyebrow {
+      font-family:var(--fd); font-size:11px; font-weight:700;
+      letter-spacing:.14em; text-transform:uppercase;
+      color:var(--cyan); margin-bottom:18px;
+    }
+    .sec-title {
+      font-family:var(--fd);
+      font-size:clamp(26px,3.8vw,46px);
+      font-weight:800; line-height:1.15;
+      color:var(--text); margin-bottom:36px;
+    }
+
+    /* ─── 1. COVER ─── */
+    #cover { padding:64px 88px; }
+    .cover-badge {
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(0,200,240,.1); border:1px solid var(--border-c);
+      border-radius:100px; padding:6px 18px;
+      font-size:11px; font-weight:700; letter-spacing:.1em;
+      text-transform:uppercase; color:var(--cyan); margin-bottom:40px;
+    }
+    .cover-badge::before {
+      content:''; width:6px; height:6px; border-radius:50%;
+      background:var(--cyan); animation:blink 2s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+
+    .cover-title {
+      font-family:var(--fd);
+      font-size:clamp(44px,7.5vw,100px);
+      font-weight:800; line-height:1.0; letter-spacing:-.025em;
+      margin-bottom:28px;
+    }
+    .cover-title .l1 { display:block; color:var(--text); }
+    .cover-title .l2 { display:block; color:var(--cyan); }
+
+    .cover-sub {
+      font-size:18px; color:var(--text2);
+      max-width:500px; line-height:1.75; margin-bottom:56px;
+    }
+    .cover-meta { display:flex; gap:52px; flex-wrap:wrap; align-items:flex-start; }
+    .mi .lbl {
+      font-size:11px; font-weight:700; letter-spacing:.1em;
+      text-transform:uppercase; color:var(--text3); margin-bottom:5px;
+    }
+    .mi .val {
+      font-family:var(--fd); font-size:17px; font-weight:700; color:var(--text);
+    }
+    .mi .val.hl { color:var(--cyan); font-size:26px; }
+
+    /* wave deco */
+    .wave-deco {
+      position:absolute; right:0; top:0; bottom:0;
+      width:42%; pointer-events:none; opacity:.1;
+    }
+
+    /* ─── 2. UNDERSTANDING ─── */
+    #understanding { background:var(--bg); }
+    .cards3 { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    .card {
+      background:var(--surf); border:1px solid var(--border);
+      border-radius:var(--r); padding:32px; position:relative; overflow:hidden;
+    }
+    .card::after {
+      content:''; position:absolute; top:0; left:0; right:0; height:2px;
+    }
+    .card.c-cyan::after   { background:var(--cyan); }
+    .card.c-violet::after { background:var(--violet); }
+    .card.c-amber::after  { background:var(--amber); }
+
+    .card-icon { width:36px; height:36px; margin-bottom:18px; display:block; color:var(--cyan); }
+    .card.c-violet .card-icon { color:var(--violet); }
+    .card.c-amber .card-icon  { color:var(--amber); }
+    .card-icon svg { width:100%; height:100%; }
+    .card-title {
+      font-family:var(--fd); font-size:16px; font-weight:700;
+      color:var(--text); margin-bottom:12px;
+    }
+    .card-body { font-size:14px; color:var(--text2); line-height:1.75; }
+
+    .gap-list { margin-top:16px; display:flex; flex-direction:column; gap:8px; }
+    .gap-item {
+      display:flex; align-items:flex-start; gap:10px;
+      font-size:13px; color:var(--text2); line-height:1.5;
+    }
+    .gap-item::before { content:'↳'; color:var(--amber); flex-shrink:0; }
+
+    /* ─── 3. STRATEGIC CALL ─── */
+    #strategic { background:var(--surf); }
+    .strat-stmt {
+      font-family:var(--fd);
+      font-size:clamp(28px,5vw,64px);
+      font-weight:800; line-height:1.15; letter-spacing:-.02em;
+      margin-bottom:48px;
+    }
+    .tag {
+      display:inline-block; padding:4px 18px; border-radius:8px;
+      margin:0 6px 10px 0;
+    }
+    .t-online { background:rgba(0,200,240,.15); color:var(--cyan); }
+    .t-google { background:rgba(16,185,129,.15); color:var(--green); }
+    .t-clinic { background:rgba(139,92,246,.15); color:var(--violet); }
+
+    .why3 { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .why-item {
+      background:var(--bg); border:1px solid var(--border);
+      border-radius:var(--r); padding:28px;
+    }
+    .why-arrow {
+      font-size:20px; color:var(--cyan); margin-bottom:14px; display:block;
+    }
+    .why-item p { font-size:14px; color:var(--text2); line-height:1.75; }
+    .why-item p strong { color:var(--text); }
+
+    /* ─── 4. COMPETITORS ─── */
+    #competitors { background:var(--bg); }
+    .table-wrap {
+      border-radius:var(--r); border:1px solid var(--border);
+      overflow:hidden; overflow-x:auto;
+    }
+    .comp-table { width:100%; border-collapse:collapse; font-size:13px; }
+    .comp-table th {
+      background:var(--surf2); padding:14px 18px;
+      text-align:left; font-family:var(--fd);
+      font-size:10px; font-weight:700; letter-spacing:.1em;
+      text-transform:uppercase; color:var(--text2);
+      border-bottom:1px solid var(--border); white-space:nowrap;
+    }
+    .comp-table td {
+      padding:13px 18px; border-bottom:1px solid var(--border);
+      color:var(--text2); vertical-align:top; line-height:1.5;
+    }
+    .comp-table tr:last-child td { border-bottom:none; }
+    .comp-table tr:hover td { background:rgba(255,255,255,.02); }
+    .brand-name { font-weight:700; color:var(--text); white-space:nowrap; }
+
+    .pill {
+      display:inline-block; padding:2px 10px; border-radius:100px;
+      font-size:11px; font-weight:600;
+    }
+    .p-no  { background:rgba(239,68,68,.15); color:#FC8181; }
+    .p-yes { background:rgba(16,185,129,.15); color:var(--green); }
+    .p-mid { background:rgba(245,158,11,.15); color:var(--amber); }
+
+    .insight {
+      margin-top:22px; background:rgba(0,200,240,.06);
+      border:1px solid var(--border-c); border-radius:var(--r);
+      padding:18px 24px; font-size:14px; color:var(--text); line-height:1.7;
+    }
+    .insight strong { color:var(--cyan); }
+
+    /* ─── 5. CHANNEL & FUNNEL ─── */
+    #channel { background:var(--surf); }
+    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+
+    .ch-focus {
+      background:var(--bg); border:1px solid var(--border);
+      border-radius:var(--r); padding:32px;
+    }
+    .ch-name {
+      font-family:var(--fd); font-size:30px; font-weight:800;
+      color:var(--green); margin-bottom:4px;
+    }
+    .ch-tag {
+      font-size:12px; color:var(--text3); text-transform:uppercase;
+      letter-spacing:.1em; font-weight:700; margin-bottom:24px;
+    }
+    .kw-list { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:26px; }
+    .kw {
+      background:rgba(16,185,129,.1); border:1px solid rgba(16,185,129,.2);
+      color:var(--green); padding:5px 14px; border-radius:100px;
+      font-size:12px; font-weight:500;
+    }
+    .exec-list { display:flex; flex-direction:column; gap:9px; }
+    .exec-item {
+      display:flex; gap:10px; font-size:13px; color:var(--text2); line-height:1.5;
+    }
+    .exec-item::before { content:'→'; color:var(--cyan); flex-shrink:0; }
+
+    .funnel-steps { display:flex; flex-direction:column; gap:14px; }
+    .fstep {
+      border-radius:var(--r); padding:22px 26px; padding-left:29px;
+      position:relative; background:var(--bg); overflow:hidden;
+    }
+    .fstep::before {
+      content:''; position:absolute; left:0; top:0; bottom:0; width:3px;
+    }
+    .fstep.f1::before { background:var(--cyan); }
+    .fstep.f2::before { background:var(--violet); }
+    .fstep.f3::before { background:var(--green); }
+
+    .fstage {
+      font-family:var(--fd); font-size:10px; font-weight:800;
+      text-transform:uppercase; letter-spacing:.14em; margin-bottom:5px;
+    }
+    .f1 .fstage { color:var(--cyan); }
+    .f2 .fstage { color:var(--violet); }
+    .f3 .fstage { color:var(--green); }
+
+    .fgoal { font-size:15px; font-weight:600; color:var(--text); margin-bottom:3px; }
+    .fhow  { font-size:13px; color:var(--text2); }
+
+    /* ─── 6. POSITIONING ─── */
+    #positioning { background:var(--bg); }
+    .pos-hero {
+      background:var(--surf); border-radius:16px;
+      padding:56px 64px; margin-bottom:36px;
+      text-align:center; position:relative; overflow:hidden;
+    }
+    .pos-hero::before {
+      content:'';
+      position:absolute; inset:0;
+      background:radial-gradient(ellipse at 50% 0%, rgba(139,92,246,.12) 0%, transparent 70%);
+      pointer-events:none;
+    }
+    .stop-line {
+      font-family:var(--fd);
+      font-size:clamp(32px,6vw,82px);
+      font-weight:800; text-transform:uppercase;
+      letter-spacing:-.025em; line-height:1;
+      color:var(--text3);
+      text-decoration:line-through;
+      text-decoration-color:var(--red);
+      text-decoration-thickness:5px;
+      opacity:.45; margin-bottom:4px;
+    }
+    .start-line {
+      font-family:var(--fd);
+      font-size:clamp(32px,6vw,82px);
+      font-weight:800; text-transform:uppercase;
+      letter-spacing:-.025em; line-height:1;
+      color:var(--cyan); margin-bottom:22px;
+    }
+    .period { color:var(--violet); }
+    .pos-note { font-size:15px; color:var(--text2); max-width:480px; margin:0 auto; line-height:1.7; }
+
+    .angles4 { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+    .angle-card {
+      background:var(--surf); border:1px solid var(--border);
+      border-radius:var(--r); padding:24px;
+    }
+    .angle-lbl {
+      font-size:10px; font-weight:700; text-transform:uppercase;
+      letter-spacing:.12em; color:var(--text3); margin-bottom:10px;
+    }
+    .angle-txt { font-size:13px; color:var(--text2); line-height:1.65; }
+
+    /* ─── 7. SCOPE ─── */
+    #scope { background:var(--surf); }
+    .scope2 { display:grid; grid-template-columns:1fr 1fr; gap:36px; }
+    .scope-col h3 {
+      font-family:var(--fd); font-size:11px; font-weight:700;
+      text-transform:uppercase; letter-spacing:.12em;
+      padding-bottom:14px; margin-bottom:20px;
+      border-bottom:1px solid var(--border);
+    }
+    .inc h3 { color:var(--green); border-color:rgba(16,185,129,.25); }
+    .exc h3 { color:var(--text3); }
+
+    .scope-cat { margin-bottom:26px; }
+    .scope-cat-title {
+      font-family:var(--fd); font-size:13px; font-weight:700;
+      color:var(--text); margin-bottom:10px;
+    }
+    .slist { display:flex; flex-direction:column; gap:7px; }
+    .si {
+      display:flex; align-items:flex-start; gap:10px;
+      font-size:13px; color:var(--text2); line-height:1.5;
+    }
+    .si-dot {
+      width:5px; height:5px; border-radius:50%; background:var(--green);
+      flex-shrink:0; margin-top:8px;
+    }
+    .exc .si-dot { background:var(--text3); }
+
+    .founder-note {
+      margin-top:28px;
+      background:rgba(0,200,240,.05); border:1px solid var(--border-c);
+      border-radius:var(--r); padding:20px 22px;
+    }
+    .fn-lbl {
+      font-size:10px; font-weight:700; text-transform:uppercase;
+      letter-spacing:.12em; color:var(--cyan); margin-bottom:8px;
+    }
+    .fn-txt { font-size:13px; color:var(--text2); line-height:1.7; }
+
+    /* ─── 8. NUMBERS ─── */
+    #numbers { background:var(--bg); }
+    .num-grid { display:grid; grid-template-columns:340px 1fr; gap:52px; align-items:start; }
+
+    .budget-card {
+      background:var(--surf); border:1px solid var(--border);
+      border-radius:var(--r); overflow:hidden;
+    }
+    .brow {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:17px 24px; border-bottom:1px solid var(--border);
+    }
+    .brow:last-of-type { border-bottom:none; }
+    .brow.total { background:rgba(0,200,240,.06); }
+    .b-lbl  { font-size:14px; color:var(--text2); }
+    .brow.total .b-lbl { font-family:var(--fd); font-weight:700; color:var(--text); }
+    .b-amt  { font-family:var(--fd); font-size:18px; font-weight:700; color:var(--text); }
+    .brow.total .b-amt { color:var(--cyan); font-size:22px; }
+    .bnote {
+      padding:14px 24px; font-size:12px; color:var(--text3);
+      border-top:1px solid var(--border); line-height:1.65;
+    }
+
+    .outlook-tbl { width:100%; border-collapse:collapse; font-size:13px; }
+    .outlook-tbl th {
+      text-align:left; padding:12px 16px;
+      font-family:var(--fd); font-size:10px; font-weight:700;
+      text-transform:uppercase; letter-spacing:.1em; color:var(--text3);
+      border-bottom:1px solid var(--border);
+    }
+    .outlook-tbl td {
+      padding:15px 16px; border-bottom:1px solid var(--border);
+      color:var(--text2);
+    }
+    .outlook-tbl tr:last-child td { border-bottom:none; }
+    .m-name { color:var(--text); font-weight:500; }
+    .m1v { color:var(--text2); font-family:var(--fd); font-weight:600; }
+    .m2v { color:var(--amber); font-family:var(--fd); font-weight:600; }
+    .m3v { color:var(--green); font-family:var(--fd); font-weight:600; }
+
+    .caveat { margin-top:14px; font-size:13px; color:var(--text3); font-style:italic; line-height:1.65; }
+
+    /* ─── 9. NEEDS ─── */
+    #needs { background:var(--surf); }
+    .needs4 { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .need-card {
+      display:flex; gap:18px; align-items:flex-start;
+      background:var(--bg); border:1px solid var(--border);
+      border-radius:var(--r); padding:22px 26px;
+    }
+    .need-num {
+      font-family:var(--fd); font-size:28px; font-weight:800;
+      color:var(--text3); opacity:.35; line-height:1; min-width:32px;
+    }
+    .need-ttl { font-size:14px; font-weight:600; color:var(--text); margin-bottom:5px; }
+    .need-txt { font-size:13px; color:var(--text2); line-height:1.55; }
+
+    /* ─── 10. WHY TQI ─── */
+    #why { background:var(--bg); }
+    .why-stmt {
+      font-family:var(--fd);
+      font-size:clamp(18px,2.8vw,30px);
+      font-weight:600; line-height:1.55;
+      color:var(--text); max-width:700px; margin-bottom:52px;
+    }
+    .why-stmt em { font-style:normal; color:var(--cyan); }
+
+    .close-grid { display:grid; grid-template-columns:1fr 340px; gap:52px; align-items:start; }
+
+    .pillars { display:flex; flex-direction:column; gap:18px; }
+    .pillar  { display:flex; gap:16px; align-items:flex-start; }
+    .p-dot   {
+      width:8px; height:8px; border-radius:50%; background:var(--cyan);
+      flex-shrink:0; margin-top:7px;
+    }
+    .p-txt   { font-size:15px; color:var(--text2); line-height:1.75; }
+
+    .cta-card {
+      background:var(--surf); border:1px solid var(--border-c);
+      border-radius:16px; padding:36px;
+    }
+    .cta-ttl {
+      font-family:var(--fd); font-size:18px; font-weight:700;
+      color:var(--text); margin-bottom:12px;
+    }
+    .cta-desc {
+      font-size:14px; color:var(--text2); line-height:1.75; margin-bottom:28px;
+    }
+    .contacts { display:flex; flex-direction:column; gap:10px; margin-bottom:28px; }
+    .citem { display:flex; align-items:center; gap:10px; font-size:13px; color:var(--text2); }
+    .citem-icon { width:15px; height:15px; flex-shrink:0; color:var(--cyan); }
+    .citem-icon svg { width:100%; height:100%; }
+    .citem a { color:var(--cyan); text-decoration:none; }
+    .citem a:hover { text-decoration:underline; }
+
+    .tqi-sig {
+      font-family:var(--fd); font-size:22px; font-weight:800;
+      color:var(--text); padding-top:22px; border-top:1px solid var(--border);
+    }
+    .tqi-sig span { color:var(--cyan); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding:28px 88px; border-top:1px solid var(--border);
+      display:flex; justify-content:space-between; align-items:center;
+      font-size:12px; color:var(--text3);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media(max-width:960px){
+      section { padding:64px 32px; }
+      footer  { padding:24px 32px; flex-direction:column; gap:6px; text-align:center; }
+      .nav-dots { display:none; }
+      .cards3,.why3,.angles4,.scope2,.two-col,.num-grid,.needs4,.close-grid
+        { grid-template-columns:1fr; }
+      .num-grid { gap:32px; }
+    }
+    @media(max-width:640px){
+      .pos-hero { padding:36px 28px; }
+      .cover-title { font-size:clamp(36px,10vw,60px); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV DOTS -->
+<nav class="nav-dots" id="navDots">
+  <button class="nd active" title="Cover"></button>
+  <button class="nd" title="Understanding"></button>
+  <button class="nd" title="Strategic Call"></button>
+  <button class="nd" title="Competitors"></button>
+  <button class="nd" title="Channels"></button>
+  <button class="nd" title="Positioning"></button>
+  <button class="nd" title="Scope"></button>
+  <button class="nd" title="Numbers"></button>
+  <button class="nd" title="Needs"></button>
+  <button class="nd" title="Why TQi"></button>
+</nav>
+
+<!-- ═══ 1. COVER ═══ -->
+<section id="cover">
+  <svg class="wave-deco" viewBox="0 0 600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M300 40 Q330 110 300 180 Q270 250 300 320 Q330 390 300 460 Q270 530 300 600 Q330 670 300 740 Q270 810 300 880" stroke="#00C8F0" stroke-width="1.8" fill="none"/>
+    <path d="M350 80 Q390 170 350 260 Q310 350 350 440 Q390 530 350 620 Q310 710 350 800" stroke="#8B5CF6" stroke-width="1.2" fill="none" opacity=".7"/>
+    <path d="M400 50 Q450 170 400 290 Q350 410 400 530 Q450 650 400 770" stroke="#00C8F0" stroke-width="0.9" fill="none" opacity=".5"/>
+    <path d="M450 100 Q510 250 450 400 Q390 550 450 700" stroke="#10B981" stroke-width="0.7" fill="none" opacity=".35"/>
+    <path d="M500 60 Q570 230 500 400 Q430 570 500 740" stroke="#8B5CF6" stroke-width="0.5" fill="none" opacity=".25"/>
+    <path d="M550 120 Q580 320 550 520" stroke="#00C8F0" stroke-width="0.4" fill="none" opacity=".2"/>
+  </svg>
+
+  <div style="position:relative;z-index:1;max-width:860px;">
+    <div class="cover-badge">Growth &amp; Performance Marketing Proposal</div>
+    <h1 class="cover-title">
+      <span class="l1">Proposal for</span>
+      <span class="l2">ZentroByte</span>
+    </h1>
+    <p class="cover-sub">A focused, budget-honest strategy to generate qualified clinic leads, with none lost in follow-up.</p>
+    <div class="cover-meta">
+      <div class="mi">
+        <div class="lbl">Prepared by</div>
+        <div class="val">The Quirky i</div>
+      </div>
+      <div class="mi">
+        <div class="lbl">Prepared for</div>
+        <div class="val">ZentroByte · ZentroHMS</div>
+      </div>
+      <div class="mi">
+        <div class="lbl">Monthly Investment</div>
+        <div class="val hl">₹90,000</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 2. UNDERSTANDING ═══ -->
+<section id="understanding">
+  <div class="eyebrow">01 · Our Understanding</div>
+  <h2 class="sec-title">The opportunity is clear.<br>The execution isn't happening yet.</h2>
+  <div class="cards3">
+    <div class="card c-cyan">
+      <span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg></span>
+      <div class="card-title">Ambient AI Scribe</div>
+      <div class="card-body">One-button, voice-led clinical note creation. No competitor in the clinic segment offers this. It's not just a feature. It's the opening line of every conversation.</div>
+    </div>
+    <div class="card c-violet">
+      <span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
+      <div class="card-title">Modular Architecture</div>
+      <div class="card-body">Clinics configure ZentroHMS around their workflow, not the other way around. For premium clinics managing multiple specialties, this is the deal-clincher in the demo room.</div>
+    </div>
+    <div class="card c-amber">
+      <span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+      <div class="card-title">Current Gap</div>
+      <div class="card-body">The product is strong. The pipeline isn't keeping up.</div>
+      <div class="gap-list">
+        <div class="gap-item">Low lead volume from digital channels</div>
+        <div class="gap-item">Manual follow-up losing qualified prospects</div>
+        <div class="gap-item">No CRM backbone to track or nurture leads</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 3. STRATEGIC CALL ═══ -->
+<section id="strategic">
+  <div class="eyebrow">02 · Strategic Call</div>
+  <div class="strat-stmt">
+    <span class="tag t-online">Online-first.</span>
+    <span class="tag t-google">Google Search-led.</span>
+    <span class="tag t-clinic">Clinic-first.</span>
+  </div>
+  <p style="font-size:15px;color:var(--text2);max-width:580px;margin-bottom:40px;line-height:1.75;">Under a sub-₹1L monthly budget, spreading across online and offline dilutes outcomes. This is a budget-efficiency call, not a preference call.</p>
+  <div class="why3">
+    <div class="why-item">
+      <span class="why-arrow">→</span>
+      <p>Clinics have <strong>faster decision cycles</strong> and are easier to reach at this budget. Hospitals are a founder-led relationship sale; paid media cannot drive that at ₹90K/month.</p>
+    </div>
+    <div class="why-item">
+      <span class="why-arrow">→</span>
+      <p>Premium clinics (aesthetic, dental, skin, IVF) are more marketing-receptive and align with ZentroHMS's modular, AI-first positioning.</p>
+    </div>
+    <div class="why-item">
+      <span class="why-arrow">→</span>
+      <p>Google Search captures <strong>existing demand</strong> from clinic owners actively searching for software. This is where every rupee works hardest.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 4. COMPETITORS ═══ -->
+<section id="competitors">
+  <div class="eyebrow">03 · Competitor Landscape</div>
+  <h2 class="sec-title">Crowded market.<br>Clear white space.</h2>
+  <div class="table-wrap">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Brand</th>
+          <th>Focus</th>
+          <th>Modular</th>
+          <th>Ambient AI</th>
+          <th>Clinic Fit</th>
+          <th>Key Gap</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="brand-name">Practo Ray</span></td>
+          <td>Clinic mgmt + marketplace</td>
+          <td><span class="pill p-no">✗ Fixed</span></td>
+          <td><span class="pill p-no">✗ None</span></td>
+          <td><span class="pill p-mid">Partial</span></td>
+          <td>Shares patient data with competitors; limited customisation</td>
+        </tr>
+        <tr>
+          <td><span class="brand-name">Insta HMS</span></td>
+          <td>Hospital + clinic, billing-heavy</td>
+          <td><span class="pill p-mid">~ Limited</span></td>
+          <td><span class="pill p-no">✗ None</span></td>
+          <td><span class="pill p-mid">Partial</span></td>
+          <td>Steep learning curve; dated UI; slow performance</td>
+        </tr>
+        <tr>
+          <td><span class="brand-name">eHospital</span></td>
+          <td>Large hospitals, government</td>
+          <td><span class="pill p-mid">~ Configurable</span></td>
+          <td><span class="pill p-no">✗ None</span></td>
+          <td><span class="pill p-no">Poor</span></td>
+          <td>Built for institutions: overkill and overpriced for clinics</td>
+        </tr>
+        <tr>
+          <td><span class="brand-name">Healthplix</span></td>
+          <td>EMR + prescription digitisation</td>
+          <td><span class="pill p-no">✗ EMR only</span></td>
+          <td><span class="pill p-mid">~ Partial Rx AI</span></td>
+          <td><span class="pill p-mid">Partial</span></td>
+          <td>Narrow EMR play; no billing, pharmacy, or lab modules</td>
+        </tr>
+        <tr>
+          <td><span class="brand-name">MocDoc HMS</span></td>
+          <td>Affordable small clinic HMS</td>
+          <td><span class="pill p-no">✗ Fixed</span></td>
+          <td><span class="pill p-no">✗ None</span></td>
+          <td><span class="pill p-yes">Good</span></td>
+          <td>Low-cost but no AI layer; limited scalability</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="insight">
+    <strong>The white space:</strong> No direct competitor offers ambient AI voice-to-notes at clinic-grade pricing. No competitor combines full modularity with a ₹2K–₹4K/month price point. Practo Ray has the strongest brand recall, yet its product depth doesn't match ZentroHMS's clinical and workflow capabilities.
+  </div>
+</section>
+
+<!-- ═══ 5. CHANNEL & FUNNEL ═══ -->
+<section id="channel">
+  <div class="eyebrow">04 · Channel Strategy &amp; Funnel</div>
+  <h2 class="sec-title">One channel. Done right.</h2>
+  <div class="two-col">
+    <div>
+      <div class="ch-focus">
+        <div class="ch-name">Google Search</div>
+        <div class="ch-tag">The only paid channel in Month 1</div>
+        <div class="kw-list">
+          <span class="kw">Clinic management software India</span>
+          <span class="kw">OPD / practice management software</span>
+          <span class="kw">HMS for clinics</span>
+          <span class="kw">AI hospital management system</span>
+          <span class="kw">ZentroHMS / ZentroByte brand terms</span>
+        </div>
+        <div class="exec-list">
+          <div class="exec-item">Tight geography: Mumbai and Delhi NCR in Month 1</div>
+          <div class="exec-item">Aggressive negative keyword filtering from Day 1</div>
+          <div class="exec-item">No spend on broad, low-intent or research-phase traffic</div>
+          <div class="exec-item">Meta retargeting considered in Month 2 once funnel is running</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:14px;color:var(--text2);margin-bottom:22px;line-height:1.75;">Every rupee flows through a single, disciplined funnel built around a qualifier, not a plain contact form.</p>
+      <div class="funnel-steps">
+        <div class="fstep f1">
+          <div class="fstage">Awareness</div>
+          <div class="fgoal">Reach clinic owners looking for HMS</div>
+          <div class="fhow">Google Search: ambient AI hook, modular USP</div>
+        </div>
+        <div class="fstep f2">
+          <div class="fstage">Consideration</div>
+          <div class="fgoal">Build trust and relevance</div>
+          <div class="fhow">Landing experience + HMS Readiness Check (5–7 question qualifier)</div>
+        </div>
+        <div class="fstep f3">
+          <div class="fstage">Conversion</div>
+          <div class="fgoal">Get demo requests</div>
+          <div class="fhow">Low-friction demo booking, social proof, CRM follow-up</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 6. POSITIONING ═══ -->
+<section id="positioning">
+  <div class="eyebrow">05 · Positioning Direction</div>
+  <div class="pos-hero">
+    <div class="stop-line">Stop Typing<span class="period">.</span></div>
+    <div class="start-line">Start Treating<span class="period">.</span></div>
+    <p class="pos-note">Immediate, felt pain. Something no competitor in the clinic segment can match. The ambient AI story opens the door. Modular architecture closes it in the demo room.</p>
+  </div>
+  <div class="angles4">
+    <div class="angle-card">
+      <div class="angle-lbl">Relief</div>
+      <div class="angle-txt">Your doctors spend 30 minutes per patient on paperwork. One button changes that.</div>
+    </div>
+    <div class="angle-card">
+      <div class="angle-lbl">Differentiation</div>
+      <div class="angle-txt">Software that fits your clinic, not a clinic that fits your software.</div>
+    </div>
+    <div class="angle-card">
+      <div class="angle-lbl">Trust</div>
+      <div class="angle-txt">Already used by hospitals and clinics across Mumbai and Delhi.</div>
+    </div>
+    <div class="angle-card">
+      <div class="angle-lbl">Niche Relevance</div>
+      <div class="angle-txt">Built for aesthetic clinics, dental practices, IVF centres. Not a generic hospital system.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 7. SCOPE ═══ -->
+<section id="scope">
+  <div class="eyebrow">06 · Scope of Work</div>
+  <h2 class="sec-title">What ₹90,000/month<br>buys, and what it doesn't.</h2>
+  <div class="scope2">
+    <div class="scope-col inc">
+      <h3>✓ Included in Retainer</h3>
+
+      <div class="scope-cat">
+        <div class="scope-cat-title">Strategy &amp; Account Management</div>
+        <div class="slist">
+          <div class="si"><span class="si-dot"></span>Monthly campaign strategy, audience planning, and channel review</div>
+          <div class="si"><span class="si-dot"></span>Weekly optimisation of campaigns, bids, and targeting</div>
+          <div class="si"><span class="si-dot"></span>Weekly performance report: spend, CTR, CPC, leads, CPL</div>
+        </div>
+      </div>
+
+      <div class="scope-cat">
+        <div class="scope-cat-title">Google Search Campaign Management</div>
+        <div class="slist">
+          <div class="si"><span class="si-dot"></span>Full campaign build: keyword research, ad groups, ad copy (2 variants/group)</div>
+          <div class="si"><span class="si-dot"></span>Ongoing management: bid strategy, negative keywords, match type refinement</div>
+          <div class="si"><span class="si-dot"></span>Brand protection campaign (ZentroHMS/ZentroByte, always-on)</div>
+          <div class="si"><span class="si-dot"></span>Landing page CTA review and copy recommendations</div>
+        </div>
+      </div>
+
+      <div class="scope-cat">
+        <div class="scope-cat-title">Lead Qualification &amp; CRM</div>
+        <div class="slist">
+          <div class="si"><span class="si-dot"></span>HMS Readiness Check: 5–7 question qualifier structure and flow</div>
+          <div class="si"><span class="si-dot"></span>Lead context packaging and delivery to sales team</div>
+          <div class="si"><span class="si-dot"></span>Lightweight CRM setup (HubSpot Free or equivalent)</div>
+          <div class="si"><span class="si-dot"></span>Automated email + WhatsApp nurture flow</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scope-col exc">
+      <h3>✗ Not Included</h3>
+      <div class="slist" style="gap:12px;">
+        <div class="si"><span class="si-dot"></span>Creative production (ad graphics, videos, brochures): quoted separately per brief</div>
+        <div class="si"><span class="si-dot"></span>Offline field execution: we build the materials, your team executes</div>
+        <div class="si"><span class="si-dot"></span>Event or conference management</div>
+        <div class="si"><span class="si-dot"></span>LinkedIn paid ads: available separately at ₹30,000–₹40,000/month additional; can be discussed once the Google Search baseline is established</div>
+      </div>
+
+      <div class="founder-note">
+        <div class="fn-lbl">Founder Visibility Note</div>
+        <div class="fn-txt">LinkedIn organic presence is the highest-leverage, zero-cost lever available. Founders posting case studies and product demos warm the same audience paid ads are reaching, making every rupee of spend convert harder. We recommend founders handle this directly; LinkedIn content management can be a separate engagement if needed.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 8. NUMBERS ═══ -->
+<section id="numbers">
+  <div class="eyebrow">07 · Budget &amp; 90-Day Outlook</div>
+  <h2 class="sec-title">Where the money goes.<br>What to expect back.</h2>
+  <div class="num-grid">
+    <div>
+      <div class="budget-card">
+        <div class="brow">
+          <span class="b-lbl">The Quirky i management fee</span>
+          <span class="b-amt">₹50,000</span>
+        </div>
+        <div class="brow">
+          <span class="b-lbl">Google Search ad spend</span>
+          <span class="b-amt">₹40,000</span>
+        </div>
+        <div class="brow total">
+          <span class="b-lbl">Total monthly investment</span>
+          <span class="b-amt">₹90,000</span>
+        </div>
+        <div class="bnote">Ad spend is passed through to Google with zero markup. Management fee covers strategy, campaign management, qualifier planning, CRM setup, lead delivery, and weekly reporting.</div>
+      </div>
+    </div>
+    <div>
+      <table class="outlook-tbl">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Month 1</th>
+            <th>Month 2</th>
+            <th>Month 3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="m-name">Google Impressions</td>
+            <td class="m1v">60K–90K</td>
+            <td class="m2v">80K–1.2L</td>
+            <td class="m3v">1L–1.5L</td>
+          </tr>
+          <tr>
+            <td class="m-name">Leads Generated</td>
+            <td class="m1v">8–14</td>
+            <td class="m2v">13–20</td>
+            <td class="m3v">18–26</td>
+          </tr>
+          <tr>
+            <td class="m-name">Est. Cost per Lead</td>
+            <td class="m1v">₹2,800–3,500</td>
+            <td class="m2v">₹1,800–2,500</td>
+            <td class="m3v">₹1,400–2,000</td>
+          </tr>
+          <tr>
+            <td class="m-name">Demos Booked</td>
+            <td class="m1v">5–9</td>
+            <td class="m2v">9–14</td>
+            <td class="m3v">13–18</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="caveat">The first 90 days are a calibration phase. CPL starts higher and falls as negative keyword lists mature, ad copy is refined, and the qualifier improves lead quality. Judge us on qualified leads and demos booked, not on signed contracts in Month 1. The sales cycle in this category is longer than a single month.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 9. NEEDS ═══ -->
+<section id="needs">
+  <div class="eyebrow">08 · What We Need From ZentroByte</div>
+  <h2 class="sec-title">Before campaigns go live,<br>four things from your side.</h2>
+  <div class="needs4">
+    <div class="need-card">
+      <div class="need-num">01</div>
+      <div>
+        <div class="need-ttl">Demo Booking Contact</div>
+        <div class="need-txt">A calendar link or WhatsApp number responded to within 24 hours. Leads lose heat fast.</div>
+      </div>
+    </div>
+    <div class="need-card">
+      <div class="need-num">02</div>
+      <div>
+        <div class="need-ttl">Customer Stories</div>
+        <div class="need-txt">3–5 testimonials or case studies for creative and qualifier content. Social proof converts.</div>
+      </div>
+    </div>
+    <div class="need-card">
+      <div class="need-num">03</div>
+      <div>
+        <div class="need-ttl">Product Walkthrough Access</div>
+        <div class="need-txt">A screen recording or live session covering the ambient AI scribe and dashboard. We need to know the product to sell it.</div>
+      </div>
+    </div>
+    <div class="need-card">
+      <div class="need-num">04</div>
+      <div>
+        <div class="need-ttl">Lead Tracking Access</div>
+        <div class="need-txt">A basic tracking sheet or CRM access to close the loop on campaign performance.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 10. WHY TQI ═══ -->
+<section id="why">
+  <div class="eyebrow">09 · Why The Quirky i</div>
+  <p class="why-stmt">The sale isn't about buying clicks. It's about <em>sharper positioning</em>, a landing experience that qualifies rather than just collects, <em>clean follow-up</em> so no lead evaporates, and a channel strategy that matches the budget <em>honestly</em>.</p>
+  <div class="close-grid">
+    <div class="pillars">
+      <div class="pillar">
+        <span class="p-dot"></span>
+        <span class="p-txt">We picked one lane (Google Search) and showed you exactly why, instead of spreading thin to look busy.</span>
+      </div>
+      <div class="pillar">
+        <span class="p-dot"></span>
+        <span class="p-txt">We told you plainly where your money produces leads and where it would produce noise.</span>
+      </div>
+      <div class="pillar">
+        <span class="p-dot"></span>
+        <span class="p-txt">We built a qualifier into the funnel, not just a form. A lead with context is worth more than a name in a spreadsheet.</span>
+      </div>
+      <div class="pillar">
+        <span class="p-dot"></span>
+        <span class="p-txt">We're strongest where strategy, creative, and performance need to work together, and that's exactly what this engagement calls for.</span>
+      </div>
+    </div>
+    <div class="cta-card">
+      <div class="cta-ttl">Next Step</div>
+      <div class="cta-desc">If aligned, we move into CRM setup, qualifier structure, and Google Search campaign build, with everything live within the first two weeks.</div>
+      <div class="contacts">
+        <div class="citem"><span class="citem-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg></span><a href="mailto:i@thequirkyi.com">i@thequirkyi.com</a></div>
+        <div class="citem"><span class="citem-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.72 12 19.79 19.79 0 0 1 1.65 3.33a2 2 0 0 1 2-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.84a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><a href="tel:+918928987749">+91 89289 87749</a></div>
+        <div class="citem"><span class="citem-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>611, W92, Vazira, Borivali West, Mumbai 400092</div>
+      </div>
+      <div class="tqi-sig">the quirky <span>i</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>ZentroByte x The Quirky i · Growth &amp; Performance Marketing Proposal</span>
+  <span>Confidential · ₹90,000/month all-inclusive</span>
+</footer>
+
+<script>
+  const sections = Array.from(document.querySelectorAll('section'));
+  const dots     = Array.from(document.querySelectorAll('.nd'));
+
+  dots.forEach((d, i) => {
+    d.addEventListener('click', () => sections[i].scrollIntoView({ behavior:'smooth' }));
+  });
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const i = sections.indexOf(e.target);
+        dots.forEach(d => d.classList.remove('active'));
+        if (dots[i]) dots[i].classList.add('active');
+      }
+    });
+  }, { threshold: 0.45 });
+
+  sections.forEach(s => io.observe(s));
+</script>
+</body>
+</html>
